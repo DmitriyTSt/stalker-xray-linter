@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.20'
+    id 'edu.sc.seis.launch4j' version '2.5.0'
+}
+
+group 'ru.dmitriyt.stalker-xray-linter'
+version '1.0-SNAPSHOT'
+
+compileKotlin {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+launch4j { //used for windows
+    mainClassName = 'ru.dmitriyt.stalkerxraylinter.MainKt'
+    headerType = 'console'
+    bundledJrePath = 'jre'
+    bundledJre64Bit = true
+    jreMinVersion = '8'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
